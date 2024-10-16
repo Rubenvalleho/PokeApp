@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import edu.ruben.pokeapp.app.extensions.loadUrl
 import edu.ruben.pokeapp.databinding.FragmentPokemonListBinding
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
 
@@ -42,7 +41,6 @@ class PokemonListFragment : Fragment() {
         setUpView()
         setUpObserver()
         viewModel.loadPokemonList()
-
     }
 
     override fun onDestroyView() {
@@ -81,6 +79,7 @@ class PokemonListFragment : Fragment() {
         val observer = Observer<PokemonListViewModel.UiState> { uiState ->
             uiState.pokemonList?.let {
                 bind(it)
+                Log.d("PokemonAdapter", "Número de Pokémon: ${it.size}")
             }
 
             uiState.errorApp?.let {
