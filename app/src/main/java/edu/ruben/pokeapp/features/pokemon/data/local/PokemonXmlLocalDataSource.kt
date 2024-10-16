@@ -30,17 +30,17 @@ class PokemonXmlLocalDataSource(private val context: Context) : PokemonDataSourc
     fun saveAllPokemon(pokemons: List<Pokemon>) {
         pokemons.forEach { pokemon ->
             val pokemonJson = gson.toJson(pokemon)
-            sharedPreferences.edit().putString(pokemon.id, pokemonJson).apply()
+            sharedPreferences.edit().putString(pokemon.pokemonId, pokemonJson).apply()
         }
     }
 
     fun savePokemon(pokemon: Pokemon) {
         val pokemonJson = gson.toJson(pokemon)
-        sharedPreferences.edit().putString(pokemon.id, pokemonJson).apply()
+        sharedPreferences.edit().putString(pokemon.pokemonId, pokemonJson).apply()
     }
 
     fun deletePokemon(pokemon: Pokemon) {
-        sharedPreferences.edit().remove(pokemon.id).apply()
+        sharedPreferences.edit().remove(pokemon.pokemonId).apply()
     }
 
     fun deleteAll() {

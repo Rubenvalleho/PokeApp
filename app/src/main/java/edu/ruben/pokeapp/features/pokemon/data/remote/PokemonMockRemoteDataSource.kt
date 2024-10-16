@@ -6,7 +6,7 @@ import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
 class PokemonMockRemoteDataSource: PokemonDataSource {
 
     private val pokemonList = listOf(
-        Pokemon("1", "Bulbasaur", "Grass", ""),
+        Pokemon("1", "Bulbasaur", "Grass", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"),
         Pokemon("2", "Ivysaur", "Grass", ""),
         Pokemon("3", "Venusaur", "Grass", ""),
         Pokemon("4", "Charmander", "Fire", ""),
@@ -19,6 +19,6 @@ class PokemonMockRemoteDataSource: PokemonDataSource {
     }
 
     override fun getPokemonById(id: String): Pokemon? {
-        return pokemonList.find {it.id == id}
+        return pokemonList.find {it.pokemonId == id}
     }
 }

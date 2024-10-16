@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.navigation.safeargs.kotlin)
 }
 
 android {
@@ -49,6 +50,8 @@ dependencies {
     implementation(libs.gson.serializer)
     implementation(libs.glide)
     implementation(libs.viewmodel.scope)
+    implementation(libs.nav.fragment.ktx)
+    implementation(libs.nav.ui.ktx)
 
     testImplementation(libs.junit)
 

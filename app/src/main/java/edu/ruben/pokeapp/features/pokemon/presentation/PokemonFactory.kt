@@ -18,4 +18,6 @@ class PokemonFactory(private val context: Context) {
 
     fun getPokemonListViewModel() = PokemonListViewModel(getPokemonListUseCase)
 
+    fun getPokemonDetailViewModel() = PokemonDetailViewModel(getPokemonUseCase)
+
 }

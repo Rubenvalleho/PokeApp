@@ -4,27 +4,26 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import edu.ruben.pokeapp.features.pokemon.domain.GetPokemonListUseCase
+import edu.ruben.pokeapp.features.pokemon.domain.GetPokemonUseCase
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class PokemonListViewModel(private val getPokemonListUseCase: GetPokemonListUseCase) : ViewModel() {
+class PokemonDetailViewModel(private val getPokemonUseCase: GetPokemonUseCase) : ViewModel() {
 
-    private val _pokemonList = MutableLiveData<UiState>()
-    val uiState: LiveData<UiState> = _pokemonList
+    private val _uiState = MutableLiveData<UiState>()
+    val uiState: LiveData<UiState> = _uiState
 
-    fun loadPokemonList() {
+    fun loadPokemon(pokemonId: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val pokemonList = getPokemonListUseCase.invoke()
-            _pokemonList.postValue(UiState(pokemonList = pokemonList))
+            val pokemon = getPokemonUseCase.invoke(pokemonId)
+            _uiState.postValue(UiState(pokemon = pokemon))
         }
     }
 
     data class UiState(
         val isLoading: Boolean = false,
-        val pokemonList: List<Pokemon>? = null,
+        val pokemon: Pokemon? = null,
         val errorApp: String? = null
     )
-
 }

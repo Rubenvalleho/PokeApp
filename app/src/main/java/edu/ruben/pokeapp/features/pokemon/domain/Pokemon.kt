@@ -1,4 +1,4 @@
 package edu.ruben.pokeapp.features.pokemon.domain
 
-data class Pokemon(val id: String, val name: String, val type: String, val imageUrl: String) {
+data class Pokemon(val pokemonId: String, val name: String, val type: String, val imageUrl: String) {
 }
