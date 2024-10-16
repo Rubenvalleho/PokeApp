@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import edu.ruben.pokeapp.R
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
 
-class PokemonAdapter(private val onPokemonClicked: (Pokemon) -> Unit) : RecyclerView.Adapter<PokemonViewHolder>() {
+class PokemonAdapter(private val onPokemonClicked: (Pokemon) -> Unit) :
+    RecyclerView.Adapter<PokemonViewHolder>() {
 
     private val dataList: MutableList<Pokemon> = mutableListOf()
 
@@ -21,7 +22,8 @@ class PokemonAdapter(private val onPokemonClicked: (Pokemon) -> Unit) : Recycler
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_pokemon_item, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.view_pokemon_item, parent, false)
         return PokemonViewHolder(view)
     }
 
