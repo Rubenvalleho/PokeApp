@@ -1,12 +1,14 @@
 package edu.ruben.pokeapp.features.pokemon.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.ruben.pokeapp.app.extensions.loadUrl
 import edu.ruben.pokeapp.databinding.FragmentPokemonListBinding
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
@@ -17,6 +19,10 @@ class PokemonListFragment : Fragment() {
 
     private var _binding: FragmentPokemonListBinding? = null
     private val binding get() = _binding!!
+
+    private val pokemonAdapter = PokemonAdapter {
+        navigateToPokemonDetail(it.pokemonId)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,12 +39,18 @@ class PokemonListFragment : Fragment() {
         pokemonFactory = PokemonFactory(requireContext())
         viewModel = pokemonFactory.getPokemonListViewModel()
 
+        setUpView()
         setUpObserver()
         viewModel.loadPokemonList()
 
     }
 
-    private fun bindData(pokemons: List<Pokemon>) {
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    /*private fun bindData(pokemons: List<Pokemon>) {
         binding.apply {
             pokemonImage1.loadUrl(pokemons[0].imageUrl)
             pokemonName1.text = pokemons[0].name
@@ -47,12 +59,28 @@ class PokemonListFragment : Fragment() {
                 navigateToPokemonDetail(pokemons[0].pokemonId)
             }
         }
+    }*/
+
+
+    private fun bind(pokemonList: List<Pokemon>) {
+        Log.d("PokemonAdapter", "Número de Pokémon: ${pokemonList.size}")
+        pokemonAdapter.setDataList(pokemonList)
+    }
+
+    private fun setUpView() {
+        binding.apply {
+            pokemonRecycler.layoutManager = LinearLayoutManager(
+                requireContext(),
+                LinearLayoutManager.VERTICAL, false
+            )
+            pokemonRecycler.adapter = pokemonAdapter
+        }
     }
 
     private fun setUpObserver() {
         val observer = Observer<PokemonListViewModel.UiState> { uiState ->
             uiState.pokemonList?.let {
-                bindData(it)
+                bind(it)
             }
 
             uiState.errorApp?.let {

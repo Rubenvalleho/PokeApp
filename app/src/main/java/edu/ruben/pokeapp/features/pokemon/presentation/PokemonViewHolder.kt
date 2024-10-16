@@ -1,6 +1,8 @@
 package edu.ruben.pokeapp.features.pokemon.presentation
 
 import android.view.View
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import edu.ruben.pokeapp.app.extensions.loadUrl
 import edu.ruben.pokeapp.databinding.ViewPokemonItemBinding

@@ -7,11 +7,11 @@ class PokemonMockRemoteDataSource: PokemonDataSource {
 
     private val pokemonList = listOf(
         Pokemon("1", "Bulbasaur", "Grass", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/001.png"),
-        Pokemon("2", "Ivysaur", "Grass", ""),
-        Pokemon("3", "Venusaur", "Grass", ""),
-        Pokemon("4", "Charmander", "Fire", ""),
-        Pokemon("5", "Charmeleon", "Fire", ""),
-        Pokemon("6", "Charizard", "Fire", "")
+        Pokemon("2", "Ivysaur", "Grass", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/002.png"),
+        Pokemon("3", "Venusaur", "Grass", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/003.png"),
+        Pokemon("4", "Charmander", "Fire", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/004.png"),
+        Pokemon("5", "Charmeleon", "Fire", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/005.png"),
+        Pokemon("6", "Charizard", "Fire", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png")
     )
 
     override fun getPokemonList(): List<Pokemon> {
