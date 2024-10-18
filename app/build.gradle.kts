@@ -52,6 +52,8 @@ dependencies {
     implementation(libs.viewmodel.scope)
     implementation(libs.nav.fragment.ktx)
     implementation(libs.nav.ui.ktx)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
 
     testImplementation(libs.junit)
 
