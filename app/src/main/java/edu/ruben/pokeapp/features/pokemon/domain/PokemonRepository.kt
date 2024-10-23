@@ -1,6 +1,6 @@
 package edu.ruben.pokeapp.features.pokemon.domain
 
 interface PokemonRepository {
-    fun getPokemonList(): List<Pokemon>
-    fun getPokemonById(id: String): Pokemon?
+    suspend fun getPokemonList(): List<Pokemon>
+    suspend fun getPokemonByName(name: String): Pokemon?
 }

@@ -20,7 +20,7 @@ class PokemonListFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val pokemonAdapter = PokemonAdapter {
-        navigateToPokemonDetail(it.pokemonId)
+        navigateToPokemonDetail(it.name)
     }
 
     override fun onCreateView(
@@ -97,10 +97,10 @@ class PokemonListFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
 
-    private fun navigateToPokemonDetail(pokemonId: String) {
+    private fun navigateToPokemonDetail(name: String) {
         findNavController().navigate(
             PokemonListFragmentDirections.actionFromPokemonListToPokemonDetail(
-                pokemonId
+                name
             )
         )
     }

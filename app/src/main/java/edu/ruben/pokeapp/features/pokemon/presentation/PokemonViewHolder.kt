@@ -16,9 +16,9 @@ class PokemonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         binding = ViewPokemonItemBinding.bind(itemView)
 
         binding.apply {
-            pokemonImage.loadUrl(pokemon.imageUrl)
+            //pokemonImage.loadUrl(pokemon.imageUrl)
             pokemonName.text = pokemon.name
-            pokemonType.text = pokemon.type
+            //pokemonType.text = pokemon.type
         }
     }
 }

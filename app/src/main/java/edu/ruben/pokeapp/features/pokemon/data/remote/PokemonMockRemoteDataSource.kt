@@ -1,4 +1,4 @@
-package edu.ruben.pokeapp.features.pokemon.data.remote
+/*package edu.ruben.pokeapp.features.pokemon.data.remote
 
 import edu.ruben.pokeapp.features.pokemon.data.PokemonDataSource
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
@@ -14,11 +14,15 @@ class PokemonMockRemoteDataSource: PokemonDataSource {
         Pokemon("6", "Charizard", "Fire", "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/006.png")
     )
 
-    override fun getPokemonList(): List<Pokemon> {
+    override suspend fun getPokemonList(): List<Pokemon> {
         return pokemonList
+    }
+
+    override suspend fun getPokemonByName(name: String): Pokemon? {
+        TODO("Not yet implemented")
     }
 
     override fun getPokemonById(id: String): Pokemon? {
         return pokemonList.find {it.pokemonId == id}
     }
-}
+}*/

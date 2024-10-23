@@ -11,7 +11,7 @@ class PokemonXmlLocalDataSource(private val context: Context) : PokemonDataSourc
 
     private val gson = Gson()
 
-    override fun getPokemonList(): List<Pokemon> {
+    override suspend fun getPokemonList(): List<Pokemon> {
         val pokemons = mutableListOf<Pokemon>()
         val mapPokemon = sharedPreferences.all
         mapPokemon.values.forEach {
@@ -21,8 +21,8 @@ class PokemonXmlLocalDataSource(private val context: Context) : PokemonDataSourc
         return pokemons
     }
 
-    override fun getPokemonById(id: String): Pokemon? {
-        return sharedPreferences.getString(id, null)?.let { pokemon ->
+    override suspend fun getPokemonByName(name: String): Pokemon? {
+        return sharedPreferences.getString(name, null)?.let { pokemon ->
             gson.fromJson(pokemon, Pokemon::class.java)
         }
     }

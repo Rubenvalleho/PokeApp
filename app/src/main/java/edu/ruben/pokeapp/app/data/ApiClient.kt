@@ -1,5 +1,6 @@
 package edu.ruben.pokeapp.app.data
 
+import edu.ruben.pokeapp.features.pokemon.data.remote.PokemonService
 import edu.ruben.pokeapp.features.pokemon.domain.Pokemon
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,6 +17,6 @@ object ApiClient {
     }
 
     fun providePokemonService(): PokemonService {
-        return provideRetrofit().create(Pokemon::class.java)
+        return provideRetrofit().create(PokemonService::class.java)
     }
 }
